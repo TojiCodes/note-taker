@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const { getNotes, saveNotes } = require('./db/store');
+const { getNotes, saveNotes, deleteNote } = require('./db/store');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,9 +26,7 @@ app.post('/api/notes', (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
   const noteId = req.params.id;
-  let notes = getNotes();
-  notes = notes.filter((note) => note.id !== noteId);
-  saveNotes(notes);
+  deleteNote(noteId);
   res.json({ message: 'Note deleted' });
 });
 
