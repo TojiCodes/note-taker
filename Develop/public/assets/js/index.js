@@ -100,7 +100,11 @@ const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
+
+  noteTitle.value = activeNote.title;
+  noteText.value = activeNote.text;
 };
+
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
