@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('docs'));
 
 // API Routes
 app.get('/api/notes', (req, res) => {
@@ -32,11 +32,11 @@ app.delete('/api/notes/:id', (req, res) => {
 
 // HTML Routes
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/notes.html'));
+  res.sendFile(path.join(__dirname, '/docs/notes.html'));
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
+  res.sendFile(path.join(__dirname, '/docs/index.html'));
 });
 
 app.listen(PORT, () => {
